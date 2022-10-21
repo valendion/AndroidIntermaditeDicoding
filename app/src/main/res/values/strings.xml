@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AndroidIntermadeDicoding</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="masukkan_nama_anda">Masukkan Nama Anda</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="silahkan_anda_registrasi">Silahkan Anda Registrasi</string>
+    <string name="login">Login</string>
+    <string name="not_member">Bukan seorang anggota ? \t</string>
+    <string name="please_register">Silahkan Daftar</string>
+    <string name="add">Add Story</string>
+    <string name="lo_gout">Logout</string>
+    <string name="setting">Setting</string>
+    <string name="mountain_views">Mountain Views</string>
+    <string name="this_image_about_mountain">This image about Mountain</string>
+
+
+</resources>
