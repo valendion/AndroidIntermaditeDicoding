@@ -8,7 +8,7 @@
     tools:context=".ui.AuthenticationActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/pb_loading"
+        android:id="@+id/pbLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
@@ -48,6 +48,7 @@
         android:id="@+id/inputEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="lio@gmail.com"
         android:layout_marginTop="8dp"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
@@ -58,11 +59,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        android:text="123456"
+        android:inputType="textPassword" app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-    <com.example.androidintermadite.ui.widget.PrimaryButton
+    <com.example.androidintermadedicoding.ui.widget.PrimaryButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

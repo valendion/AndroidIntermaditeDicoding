@@ -1,9 +1,12 @@
 package com.example.androidintermadedicoding.data.network
 
 import com.example.androidintermadedicoding.data.model.ResponseAllStory
+import com.example.androidintermadedicoding.data.model.ResponseDetail
 import com.example.androidintermadedicoding.data.model.ResponseLogin
 import com.example.androidintermadedicoding.data.model.ResponseRegister
 import com.example.androidintermadedicoding.utils.Constans
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiServiceStory {
@@ -25,5 +28,17 @@ interface ApiServiceStory {
     @GET(Constans.STORY_URL)
     suspend fun getAllStory(@Header(Constans.AUTHORIZATION) token: String): ResponseAllStory
 
+    @GET("${Constans.STORY_URL}/{id}")
+    suspend fun getDetailStory(
+        @Header(Constans.AUTHORIZATION) token: String,
+        @Path("id") id: String
+    ): ResponseDetail
 
+    @Multipart
+    @POST(Constans.STORY_URL)
+    suspend fun postStory(
+        @Header(Constans.AUTHORIZATION) token: String,
+        @Part file: MultipartBody.Part,
+        @Part("description") description: RequestBody
+    ): ResponseRegister
 }

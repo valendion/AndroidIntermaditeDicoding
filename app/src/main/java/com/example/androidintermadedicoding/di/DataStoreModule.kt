@@ -20,8 +20,8 @@ import org.koin.dsl.module
 
 
 val dataStoreModule = module {
-    factory { provideProtoData(get())}
-    factory { PreferenceData(get()) }
+    single { provideProtoData(get())}
+    single { PreferenceData(get()) }
     single { PreferenceFactory(get()) }
     viewModel { PreferenceViewModel(get()) }
 }

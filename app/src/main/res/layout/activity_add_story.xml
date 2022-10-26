@@ -4,6 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ui.AddStoryActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addStoryToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        tools:ignore="parent"
+        android:background="@color/primaryGrey"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/primaryBlack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageStory"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/ic_image_24"
+        app:layout_constraintTop_toBottomOf="@+id/addStoryToolbar" />
+
+    <com.example.androidintermadedicoding.ui.widget.PrimaryButton
+        android:id="@+id/cameraBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/camera"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toStartOf="@id/galeriBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageStory" />
+
+    <com.example.androidintermadedicoding.ui.widget.PrimaryButton
+        android:id="@+id/galeriBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/galery"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cameraBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageStory" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:inputType="textMultiLine"
+        android:id="@+id/inputDescription"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="8dp"
+        android:gravity="top"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/border_black"
+        app:layout_constraintTop_toBottomOf="@id/cameraBtn"/>
+
+    <com.example.androidintermadedicoding.ui.widget.PrimaryButton
+        android:id="@+id/uploadBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/upload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/grupAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="uploadBtn,cameraBtn, galeriBtn, imageStory,inputDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

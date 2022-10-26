@@ -5,11 +5,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class ResponseAllStory(
+data class ResponseDetail(
     @Json(name = "error")
-    var error: Boolean? = null,
-    @Json(name = "listStory")
-    var listStory: List<Story?>? = null,
+    var error: Boolean? = false,
     @Json(name = "message")
-    var message: String? = null
+    var message: String? = "",
+    @Json(name = "story")
+    var story: Story? = Story()
 )

@@ -6,10 +6,7 @@
         android:icon="@drawable/ic_add_24"
         android:title="@string/add"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/setting"
-        android:title="@string/setting"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_out_24"

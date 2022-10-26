@@ -9,9 +9,10 @@
     <string name="please_register">Silahkan Daftar</string>
     <string name="add">Add Story</string>
     <string name="lo_gout">Logout</string>
-    <string name="setting">Setting</string>
     <string name="mountain_views">Mountain Views</string>
-    <string name="this_image_about_mountain">This image about Mountain</string>
+    <string name="galery">Galery</string>
+    <string name="camera">Camera</string>
+    <string name="upload">Upload</string>
 
 
 </resources>

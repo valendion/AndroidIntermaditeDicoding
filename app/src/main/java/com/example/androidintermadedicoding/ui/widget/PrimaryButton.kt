@@ -1,4 +1,4 @@
-package com.example.androidintermadite.ui.widget
+package com.example.androidintermadedicoding.ui.widget
 
 import android.content.Context
 import android.graphics.Canvas

@@ -8,7 +8,7 @@
     tools:context=".ui.RegisterActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/pb_loading"
+        android:id="@+id/pbLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
@@ -61,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnRegis"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-    <com.example.androidintermadite.ui.widget.PrimaryButton
+    <com.example.androidintermadedicoding.ui.widget.PrimaryButton
         android:id="@+id/btnRegis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

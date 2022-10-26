@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/pb_loading"
+        android:id="@+id/pbLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"

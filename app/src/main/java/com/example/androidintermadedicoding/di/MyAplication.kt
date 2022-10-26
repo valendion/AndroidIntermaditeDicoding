@@ -14,7 +14,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     single {
-        StoryRepository(get(), get())
+        StoryRepository(get())
     }
     factory { StorisAdapter() }
     viewModel { StoryViewModel(get()) }
