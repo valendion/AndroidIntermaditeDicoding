@@ -1,5 +1,6 @@
 package com.example.androidintermadedicoding.data.network
 
+import com.example.androidintermadedicoding.BuildConfig
 import com.example.androidintermadedicoding.utils.Constans
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -10,7 +11,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 val networkModule = module {
     single { Moshi.Builder().build() }
-    factory { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) }
+    factory {
+        if(BuildConfig.DEBUG){
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        }else{
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
+    }
     factory { provideOkHttp(get()) }
     single { provideRetrofit(get(), get()) }
     factory { provideService(get()) }

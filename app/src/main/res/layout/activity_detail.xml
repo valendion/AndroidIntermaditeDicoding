@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
+        android:transitionName="image"
         android:layout_marginHorizontal="16dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_image_24"
@@ -45,6 +46,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:transitionName="title"
         android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageStory" />

@@ -25,7 +25,6 @@ class AuthenticationActivity : AppCompatActivity() {
 
     private val prefFactory: PreferenceFactory by inject()
     private val pref: PreferenceViewModel by viewModels { prefFactory }
-    var token = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthenticationBinding.inflate(layoutInflater)
@@ -40,7 +39,7 @@ class AuthenticationActivity : AppCompatActivity() {
                         Intent(
                             this@AuthenticationActivity,
                             ListStoryActivity::class.java
-                        ).putExtra("token", token)
+                        )
                     )
                     finishAffinity()
                 }
@@ -88,11 +87,13 @@ class AuthenticationActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
+                                pref.saveBearerKey(data.loginResult?.token.toString())
+
                                 startActivity(
                                     Intent(
                                         this@AuthenticationActivity,
                                         ListStoryActivity::class.java
-                                    ).putExtra("token", data.loginResult?.token)
+                                    )
                                 )
 
                                 finishAffinity()

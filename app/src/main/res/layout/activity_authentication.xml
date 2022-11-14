@@ -48,7 +48,6 @@
         android:id="@+id/inputEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="lio@gmail.com"
         android:layout_marginTop="8dp"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
@@ -59,7 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="123456"
         android:inputType="textPassword" app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 

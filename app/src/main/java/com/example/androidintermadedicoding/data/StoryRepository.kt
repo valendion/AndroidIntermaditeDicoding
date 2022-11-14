@@ -11,7 +11,6 @@ import com.example.androidintermadedicoding.utils.Constans
 import com.example.androidintermadedicoding.utils.Status
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Multipart
 
 
 class StoryRepository(

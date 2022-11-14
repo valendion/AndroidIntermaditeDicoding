@@ -15,12 +15,13 @@ import com.example.androidintermadedicoding.utils.preference.PreferenceFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
 val dataStoreModule = module {
-    single { provideProtoData(get())}
+    single { provideProtoData(androidContext())}
     single { PreferenceData(get()) }
     single { PreferenceFactory(get()) }
     viewModel { PreferenceViewModel(get()) }

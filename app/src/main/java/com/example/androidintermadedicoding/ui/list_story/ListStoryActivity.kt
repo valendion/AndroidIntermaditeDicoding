@@ -2,7 +2,6 @@ package com.example.androidintermadedicoding.ui.list_story
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -24,6 +23,7 @@ import org.koin.android.ext.android.inject
 
 class ListStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListStoryBinding
+
     private val factoryPref: PreferenceFactory by inject()
     private val storisAdapter: StorisAdapter by inject()
     private val prefViewModel: PreferenceViewModel by viewModels { factoryPref }
@@ -35,17 +35,12 @@ class ListStoryActivity : AppCompatActivity() {
     private val prefFactory: PreferenceFactory by inject()
     private val pref: PreferenceViewModel by viewModels { prefFactory }
 
-    companion object {
-        val nameClass: String = ListStoryActivity::class.java.simpleName
-    }
 
-    var token = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        token = intent.getStringExtra("token").toString()
-        pref.saveBearerKey(token)
 
         binding.apply {
             setSupportActionBar(listStoryToolbar)

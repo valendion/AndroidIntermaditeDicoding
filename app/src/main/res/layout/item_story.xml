@@ -32,7 +32,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:transitionName="description"
+            android:transitionName="title"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"

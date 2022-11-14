@@ -3,22 +3,20 @@ package com.example.androidintermadedicoding.ui.widget
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.example.androidintermadedicoding.R
-
 import com.example.androidintermadedicoding.utils.Formatting
 
 class InputEmail : AppCompatEditText, View.OnTouchListener {
 
     private lateinit var clearButtonImage: Drawable
     private  var errorMessage: String? = null
-    var isFormatEmail = false
+    private var isFormatEmail = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -41,31 +39,19 @@ class InputEmail : AppCompatEditText, View.OnTouchListener {
 
         setOnTouchListener(this)
 
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        addTextChangedListener(onTextChanged = {s,_,_,_ ->
+            if (s.toString().isNotEmpty()) {
+                if (Formatting.isFormatEmail(s.toString())) {
+                    isFormatEmail = true
+                }else{
 
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString().isNotEmpty()) {
-                    if (Formatting.isFormatEmail(s.toString())) {
-                        isFormatEmail = true
-                    }else{
-
-                        isFormatEmail = false
-                        errorMessage = "Format Email Anda tidak benar"
-                    }
-                    showClearButton()
-                } else {
-
-                    hideClearButton()
+                    isFormatEmail = false
+                    errorMessage = "Format Email Anda tidak benar"
                 }
+                showClearButton()
+            } else {
 
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
+                hideClearButton()
             }
 
         })

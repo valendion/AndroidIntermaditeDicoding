@@ -18,7 +18,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.example.androidintermadedicoding.R
 import com.example.androidintermadedicoding.data.view_model.AuthenticationFactory
 import com.example.androidintermadedicoding.data.view_model.StoryViewModel
 import com.example.androidintermadedicoding.databinding.ActivityAddStoryBinding
@@ -44,11 +43,7 @@ class AddStoryActivity : AppCompatActivity() {
     private val prefFactory: PreferenceFactory by inject()
     private val pref: PreferenceViewModel by viewModels{prefFactory}
 
-    companion object {
 
-        private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
-        private const val REQUEST_CODE_PERMISSIONS = 10
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -216,5 +211,11 @@ class AddStoryActivity : AppCompatActivity() {
         intent.type = "image/*"
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGalery.launch(chooser)
+    }
+
+    companion object {
+
+        private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
 }

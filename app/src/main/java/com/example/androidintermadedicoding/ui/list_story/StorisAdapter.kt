@@ -20,11 +20,9 @@ class StorisAdapter : RecyclerView.Adapter<StorisAdapter.StoryViewHolder>() {
     fun setList(list: ArrayList<Story?>?){
         _stories.clear()
         notifyDataSetChanged()
-        if (list != null) {
-            list.forEach {
-                if (it != null){
-                    add(it)
-                }
+        list?.forEach {
+            if (it != null){
+                add(it)
             }
         }
     }
@@ -34,7 +32,7 @@ class StorisAdapter : RecyclerView.Adapter<StorisAdapter.StoryViewHolder>() {
         notifyItemInserted(_stories.size)
     }
 
-    inner class StoryViewHolder(val binding: ItemStoryBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class StoryViewHolder(private val binding: ItemStoryBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(story: Story){
             binding.apply {
                 imageStory.load(story.photoUrl) {
