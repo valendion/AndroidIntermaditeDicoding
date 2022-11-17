@@ -25,6 +25,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
     private val prefFactory: PreferenceFactory by inject()
     private val pref: PreferenceViewModel by viewModels { prefFactory }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthenticationBinding.inflate(layoutInflater)

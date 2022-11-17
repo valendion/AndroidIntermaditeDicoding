@@ -5,18 +5,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidintermadedicoding.R
-import com.example.androidintermadedicoding.data.model.Story
+import com.example.androidintermadedicoding.data.paging.LoadingStateAdapter
 import com.example.androidintermadedicoding.data.view_model.AuthenticationFactory
 import com.example.androidintermadedicoding.data.view_model.StoryViewModel
 import com.example.androidintermadedicoding.databinding.ActivityListStoryBinding
 import com.example.androidintermadedicoding.ui.AddStoryActivity
 import com.example.androidintermadedicoding.ui.AuthenticationActivity
-import com.example.androidintermadedicoding.utils.Status
+import com.example.androidintermadedicoding.ui.map.MapActivity
 import com.example.androidintermadedicoding.utils.preference.PreferenceFactory
 import com.example.androidintermadedicoding.utils.preference.PreferenceViewModel
 import org.koin.android.ext.android.inject
@@ -25,7 +24,10 @@ class ListStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListStoryBinding
 
     private val factoryPref: PreferenceFactory by inject()
-    private val storisAdapter: StorisAdapter by inject()
+
+    //    private val storisAdapter: StorisAdapter by inject()
+    private val storyPaginigAdapter: StoryListAdapter by inject()
+
     private val prefViewModel: PreferenceViewModel by viewModels { factoryPref }
 
     private val authenticationFactory: AuthenticationFactory by inject()
@@ -34,7 +36,6 @@ class ListStoryActivity : AppCompatActivity() {
 
     private val prefFactory: PreferenceFactory by inject()
     private val pref: PreferenceViewModel by viewModels { prefFactory }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,60 +47,42 @@ class ListStoryActivity : AppCompatActivity() {
             setSupportActionBar(listStoryToolbar)
             supportActionBar?.title = "StoryApp"
 
-            listStoryRv.apply {
-
-                layoutManager = LinearLayoutManager(this@ListStoryActivity)
-                setHasFixedSize(true)
-                adapter = storisAdapter
 
                 getData()
 
-            }
-        }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        getData()
+
+        }
     }
 
     private fun getData() {
+
+
+        binding.listStoryRv.apply {
+
+            layoutManager = LinearLayoutManager(this@ListStoryActivity)
+            adapter = storyPaginigAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    storyPaginigAdapter.retry()
+                }
+            )
+        }
         pref.getBearerKey().observe(this) {
-
-
             binding.apply {
-                storyViewModel.getAllStories(it)
-                    .observe(this@ListStoryActivity) { status ->
-                        when (status) {
-
-                            is Status.Loading -> {
-                                grupStoris.visibility = View.GONE
-                                pbLoading.visibility = View.VISIBLE
+                storyViewModel.getAllStoryPaging(it).observe(this@ListStoryActivity) {
+                        storyPaginigAdapter.addLoadStateListener {loadState ->
+                            if (loadState.prepend.endOfPaginationReached){
+                                binding.grupStoris.visibility = View.VISIBLE
+                                binding.pbLoading.visibility = View.GONE
+                            }else{
+                                binding.grupStoris.visibility = View.GONE
+                                binding.pbLoading.visibility = View.VISIBLE
                             }
-
-                            is Status.Success -> {
-                                grupStoris.visibility = View.VISIBLE
-                                pbLoading.visibility = View.GONE
-
-                                val data = status.data
-
-                                storisAdapter.setList(data.listStory as ArrayList<Story?>?)
-                                toastMessage(data.message.toString())
-                            }
-
-                            is Status.Error -> {
-                                grupStoris.visibility = View.VISIBLE
-                                pbLoading.visibility = View.GONE
-                                toastMessage("Some Thing Wrong")
-                            }
-
                         }
-
-                    }
+                       storyPaginigAdapter.submitData(lifecycle, it)
+                }
             }
         }
-
-
     }
 
 
@@ -117,12 +100,13 @@ class ListStoryActivity : AppCompatActivity() {
                 startActivity(Intent(this@ListStoryActivity, AuthenticationActivity::class.java))
                 finishAffinity()
             }
+
+            R.id.map -> {
+                startActivity(Intent(this@ListStoryActivity, MapActivity::class.java))
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun toastMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT)
-            .show()
-    }
+
 }

@@ -26,7 +26,8 @@ interface ApiServiceStory {
     ): ResponseLogin
 
     @GET(Constans.STORY_URL)
-    suspend fun getAllStory(@Header(Constans.AUTHORIZATION) token: String): ResponseAllStory
+    suspend fun getAllStoryPaging(@Header(Constans.AUTHORIZATION) token: String,
+    @Query("page")page: Int, @Query("size") size:Int): ResponseAllStory
 
     @GET("${Constans.STORY_URL}/{id}")
     suspend fun getDetailStory(
@@ -41,4 +42,8 @@ interface ApiServiceStory {
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody
     ): ResponseRegister
+
+    @GET(Constans.STORY_URL)
+    suspend fun getAllLocation(@Header(Constans.AUTHORIZATION) token: String,
+    @Query("location") param:Int = 1): ResponseAllStory
 }

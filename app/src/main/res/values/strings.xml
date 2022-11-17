@@ -13,6 +13,11 @@
     <string name="galery">Galery</string>
     <string name="camera">Camera</string>
     <string name="upload">Upload</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="map_key">AIzaSyBPkS3lApqsJ2qKaXBDOSllzWKY-KrIe0Q</string>
+    <string name="map">Map</string>
+    <string name="time_out">Time Out</string>
+    <string name="coba_lagi">Coba Lagi</string>
 
 
 </resources>

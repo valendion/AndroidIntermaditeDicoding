@@ -6,6 +6,7 @@ import com.example.androidintermadedicoding.data.network.networkModule
 import com.example.androidintermadedicoding.data.view_model.AuthenticationFactory
 import com.example.androidintermadedicoding.data.view_model.StoryViewModel
 import com.example.androidintermadedicoding.ui.list_story.StorisAdapter
+import com.example.androidintermadedicoding.ui.list_story.StoryListAdapter
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,6 +18,7 @@ val appModule = module {
         StoryRepository(get())
     }
     factory { StorisAdapter() }
+    factory { StoryListAdapter() }
     viewModel { StoryViewModel(get()) }
     single { AuthenticationFactory(get()) }
 }
