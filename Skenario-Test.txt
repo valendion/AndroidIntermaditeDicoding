@@ -1,0 +1,17 @@
+Unit Testing
+
+*Login
+- Post LoginStory tidak null dan mengembalikan Status Success
+- Post LoginStory tidak null dan mengembalikan Status Error
+
+*Register
+- Post RegisternStory tidak null dan mengembalikan Status Success
+- Post RegisterStory tidak null dan mengembalikan Status Error
+
+*Add
+- Post AddStory tidak null dan mengembalikan Status Success
+- Post AddnStory tidak null dan mengembalikan Status Error
+
+*Location
+- Get GetLocationStory tidak null dan mengembalikan Status Success
+- Get GetLocationStory tidak null dan mengembalikan Status Error

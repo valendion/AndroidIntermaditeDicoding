@@ -158,6 +158,8 @@ class AddStoryActivity : AppCompatActivity() {
         }
     }
 
+
+
     private lateinit var currentPhotoPath: String
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()

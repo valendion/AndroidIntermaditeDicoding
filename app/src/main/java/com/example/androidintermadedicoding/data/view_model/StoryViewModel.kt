@@ -14,7 +14,6 @@ class StoryViewModel(private val storyRepository: StoryRepository) : ViewModel()
 
     fun postLogin(email: String, password: String) = storyRepository.postLogin(email, password)
 
-
     fun getAllStoryPaging(token: String) = storyRepository.getAllStoryyPaging(token).cachedIn(viewModelScope)
 
     fun getDetailStories(token: String, id: String) = storyRepository.getDetailStories(token, id)

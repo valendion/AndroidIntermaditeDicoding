@@ -55,9 +55,12 @@ class ListStoryActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
+
     private fun getData() {
-
-
         binding.listStoryRv.apply {
 
             layoutManager = LinearLayoutManager(this@ListStoryActivity)
