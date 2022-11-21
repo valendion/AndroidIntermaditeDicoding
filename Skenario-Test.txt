@@ -1,17 +1,54 @@
 Unit Testing
 
+ViewModel 
+
 *Login
-- Post LoginStory tidak null dan mengembalikan Status Success
-- Post LoginStory tidak null dan mengembalikan Status Error
+a. Ketika Login Sukses
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon tidak eror
+
+b. Ketika Login Gagal
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon eror
 
 *Register
-- Post RegisternStory tidak null dan mengembalikan Status Success
-- Post RegisterStory tidak null dan mengembalikan Status Error
+a. Ketika Registrasi Sukses
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon tidak eror
 
-*Add
-- Post AddStory tidak null dan mengembalikan Status Success
-- Post AddnStory tidak null dan mengembalikan Status Error
+b. Ketika Registrasi Gagal
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon eror
 
-*Location
-- Get GetLocationStory tidak null dan mengembalikan Status Success
-- Get GetLocationStory tidak null dan mengembalikan Status Error
+*Menambahkan Story (Add)
+a. Ketika Add Sukses
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon tidak eror
+
+b. Ketika Add Gagal
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon eror
+
+*Mendapatkan kumpulan lokasi (Location)
+a. Ketika Location Sukses
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon tidak eror
+
+b. Ketika Location Gagal
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon eror
+
+*Story
+a. Ketika Mengambil data dari Pagination
+	- Memastikan data tidak kosong
+	- Membandingkan data dummy story dan data pada pagination sama
+	- Membandingkan jumlah data dummy story dan jumlah data pada paginantion sama
+	- Membandingkan id pada data dummy dan id pada data pagination sama
