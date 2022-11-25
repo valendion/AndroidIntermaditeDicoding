@@ -1,9 +1,6 @@
 package com.example.androidintermadedicoding.data.view_model.utils
 
-import com.example.androidintermadedicoding.data.model.LoginResult
-import com.example.androidintermadedicoding.data.model.ResponseAllStory
-import com.example.androidintermadedicoding.data.model.ResponseLogin
-import com.example.androidintermadedicoding.data.model.ResponseRegister
+import com.example.androidintermadedicoding.data.model.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.MultipartBody
@@ -14,14 +11,17 @@ object DataDummy {
     const val password = "123456"
     const val name = "lio"
     const val token = "token"
-     val description = "Dummy Description".toRequestBody()
-     val file = MultipartBody.Part.create("dummy".toRequestBody())
+    val description = "Dummy Description".toRequestBody()
+    val file = MultipartBody.Part.create("dummy".toRequestBody())
+    const val id = "Dummy  id"
 
 
-    fun generateDummyResponseLogin(): ResponseLogin{
-        val loginResult = LoginResult(userId = "user-SAKJB0rUEHBT3I7k",
-        name = "lio",
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")
+    fun generateDummyResponseLogin(): ResponseLogin {
+        val loginResult = LoginResult(
+            userId = "user-SAKJB0rUEHBT3I7k",
+            name = "lio",
+            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+        )
 
         return ResponseLogin(
             error = false,
@@ -30,7 +30,7 @@ object DataDummy {
         )
     }
 
-    fun generateDummyResponseRegister(): ResponseRegister{
+    fun generateDummyResponseRegister(): ResponseRegister {
         return ResponseRegister(
             error = false,
             message = "User created"
@@ -145,6 +145,68 @@ object DataDummy {
         return adapter.fromJson(json)!!
     }
 
+    fun generateDummyResponseDetail(): ResponseDetail {
+        val json = """
+            {
+                "error": false,
+                "message": "Stories fetched successfully",
+                "listStory": [
+                    {
+                        "id": "story-bVFHHyRUOAxAqWza",
+                        "name": "deri",
+                        "description": "hello world",
+                        "photoUrl": "https://story-api.dicoding.dev/images/stories/photos-1669343551751_RldtnNyO.jpg",
+                        "createdAt": "2022-11-25T02:32:31.753Z",
+                        "lat": null,
+                        "lon": null
+                    },
+                    {
+                        "id": "story-crV1r4NdKGNQNZE7",
+                        "name": "rev",
+                        "description": "reviewer",
+                        "photoUrl": "https://story-api.dicoding.dev/images/stories/photos-1669343144352_1f_eN1p5.jpg",
+                        "createdAt": "2022-11-25T02:25:44.354Z",
+                        "lat": null,
+                        "lon": null
+                    },
+                    {
+                        "id": "story-KVcVG6wirn0Hw6FX",
+                        "name": "aka",
+                        "description": "lorem ipsum",
+                        "photoUrl": "https://story-api.dicoding.dev/images/stories/photos-1669343045432_8dgJ3xNf.jpg",
+                        "createdAt": "2022-11-25T02:24:05.435Z",
+                        "lat": null,
+                        "lon": null
+                    },
+                    {
+                        "id": "story-3-W2nSWwAxGGkGRA",
+                        "name": "sabha",
+                        "description": "hhhhhhhhhhhhhh",
+                        "photoUrl": "https://story-api.dicoding.dev/images/stories/photos-1669341291934_eP9F5sw3.jpg",
+                        "createdAt": "2022-11-25T01:54:51.935Z",
+                        "lat": null,
+                        "lon": null
+                    },
+                    {
+                        "id": "story-IqHnkSWZ9kI7MGsq",
+                        "name": "sabha",
+                        "description": "rtetertertert",
+                        "photoUrl": "https://story-api.dicoding.dev/images/stories/photos-1669341282911_KxEbiI6g.jpg",
+                        "createdAt": "2022-11-25T01:54:42.913Z",
+                        "lat": null,
+                        "lon": null
+                    }
+                ]
+            }
+        """.trimIndent()
+
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val adapter = moshi.adapter(ResponseDetail::class.java)
+        return adapter.fromJson(json)!!
+    }
 
 
 }

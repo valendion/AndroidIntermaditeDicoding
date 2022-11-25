@@ -1,4 +1,4 @@
-Unit Testing
+nit Testing
 
 ViewModel 
 
@@ -42,6 +42,17 @@ a. Ketika Location Sukses
 	- Memastikan respon tidak eror
 
 b. Ketika Location Gagal
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon eror
+
+*Mendapatkan Detail
+a. Ketika Detail Sukses
+	- Memastikan fungsinya di eksekusi
+	- Memastikan data tidak kosong
+	- Memastikan respon tidak eror
+
+b. Ketika Detail Gagal
 	- Memastikan fungsinya di eksekusi
 	- Memastikan data tidak kosong
 	- Memastikan respon eror

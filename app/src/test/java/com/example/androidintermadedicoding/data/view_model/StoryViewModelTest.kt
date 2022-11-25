@@ -7,10 +7,7 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
 import coil.annotation.ExperimentalCoilApi
 import com.example.androidintermadedicoding.data.StoryRepository
-import com.example.androidintermadedicoding.data.model.ResponseAllStory
-import com.example.androidintermadedicoding.data.model.ResponseLogin
-import com.example.androidintermadedicoding.data.model.ResponseRegister
-import com.example.androidintermadedicoding.data.model.Story
+import com.example.androidintermadedicoding.data.model.*
 import com.example.androidintermadedicoding.data.view_model.utils.DataDummy
 import com.example.androidintermadedicoding.data.view_model.utils.MainDispatcherRule
 import com.example.androidintermadedicoding.data.view_model.utils.StoryPagingSource
@@ -58,6 +55,9 @@ class StoryViewModelTest {
     private val dummyLocation = DataDummy.generateDummyResponseLocation()
 
     private val dummyStory = dummyLocation.listStory?.filterNotNull() ?: listOfNotNull()
+
+    private val dummyDetail = DataDummy.generateDummyResponseDetail()
+    private val dummyId = DataDummy.id
 
     @Before
     fun setUp() {
@@ -189,6 +189,34 @@ class StoryViewModelTest {
     }
 
     @Test
+    fun `when Get Detail Should not null and Return Success`() {
+        val expectedDetail = MutableLiveData<Status<ResponseDetail>>()
+
+        expectedDetail.value = Status.Success(dummyDetail)
+
+        `when`(storyRepository.getDetailStories(dummyToken, dummyId) ).thenReturn(expectedDetail)
+
+        val actualDetail = storyViewModel.getDetailStories(dummyToken, dummyId).getOrAwaitValue()
+
+        Mockito.verify(storyRepository).getDetailStories(dummyToken, dummyId)
+        assertNotNull(actualDetail)
+        assertTrue(actualDetail is Status.Success)
+    }
+
+    @Test
+    fun `when Get Detail Network Error Should Return Error`() {
+        val expectedDetail = MutableLiveData<Status<ResponseDetail>>()
+        expectedDetail.value = Status.Error("Error")
+        `when`(storyRepository.getDetailStories(dummyToken, dummyId)).thenReturn(expectedDetail)
+
+        val actualDetail = storyViewModel.getDetailStories(dummyToken, dummyId).getOrAwaitValue()
+
+        Mockito.verify(storyRepository).getDetailStories(dummyToken, dummyId)
+        assertNotNull(actualDetail)
+        assertTrue(actualDetail is Status.Error)
+    }
+
+    @Test
     fun `when GetStory Should Not Null`() = runTest {
         val data: PagingData<Story> = StoryPagingSource.snapshot(dummyStory)
         val expectedStory = MutableLiveData<PagingData<Story>>()
@@ -211,8 +239,6 @@ class StoryViewModelTest {
         assertEquals(dummyStory,differ.snapshot())
         assertEquals(dummyStory.size,differ.snapshot().size)
         assertEquals(dummyStory[0].id,differ.snapshot()[0]?.id)
-
-
     }
 
     private val noopListUpdateCalback = object : ListUpdateCallback {
