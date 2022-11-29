@@ -1,5 +1,6 @@
 package com.example.androidintermadedicoding.data.view_model
 
+import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.AsyncPagingDataDiffer
@@ -87,8 +88,11 @@ class StoryViewModelTest {
         val actualLogin = storyViewModel.postLogin(dummyEmail, dummyPassword).getOrAwaitValue()
 
         Mockito.verify(storyRepository).postLogin(dummyEmail, dummyPassword)
-        assertNotNull(actualLogin)
         assertTrue(actualLogin is Status.Error)
+
+        if (actualLogin is Status.Error){
+            assertNotNull(actualLogin.error)
+        }
     }
 
 
@@ -121,8 +125,11 @@ class StoryViewModelTest {
             storyViewModel.postRegister(dummyName, dummyEmail, dummyPassword).getOrAwaitValue()
 
         Mockito.verify(storyRepository).postRegister(dummyName, dummyEmail, dummyPassword)
-        assertNotNull(actualRegister)
         assertTrue(actualRegister is Status.Error)
+
+        if (actualRegister is Status.Error){
+            assertNotNull(actualRegister.error)
+        }
     }
 
 
@@ -155,8 +162,11 @@ class StoryViewModelTest {
             storyViewModel.postStory(dummyToken, dummyDescription, dummyFile).getOrAwaitValue()
 
         Mockito.verify(storyRepository).postStory(dummyToken, dummyDescription, dummyFile)
-        assertNotNull(actualAdd)
         assertTrue(actualAdd is Status.Error)
+
+        if (actualAdd is Status.Error){
+            assertNotNull(actualAdd.error)
+        }
     }
 
 
@@ -184,8 +194,11 @@ class StoryViewModelTest {
         val actualLocation = storyViewModel.getAllLocation(dummyToken).getOrAwaitValue()
 
         Mockito.verify(storyRepository).getAllLocation(dummyToken)
-        assertNotNull(actualLocation)
         assertTrue(actualLocation is Status.Error)
+
+        if (actualLocation is Status.Error){
+            assertNotNull(actualLocation.error)
+        }
     }
 
     @Test
@@ -212,8 +225,11 @@ class StoryViewModelTest {
         val actualDetail = storyViewModel.getDetailStories(dummyToken, dummyId).getOrAwaitValue()
 
         Mockito.verify(storyRepository).getDetailStories(dummyToken, dummyId)
-        assertNotNull(actualDetail)
         assertTrue(actualDetail is Status.Error)
+
+        if (actualDetail is Status.Error){
+            assertNotNull(actualDetail.error)
+        }
     }
 
     @Test

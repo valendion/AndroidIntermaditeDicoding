@@ -10,7 +10,7 @@ a. Ketika Login Sukses
 
 b. Ketika Login Gagal
 	- Memastikan fungsinya di eksekusi
-	- Memastikan data tidak kosong
+	- Memastikan pesan  eror tidak kosong
 	- Memastikan respon eror
 
 *Register
@@ -21,7 +21,7 @@ a. Ketika Registrasi Sukses
 
 b. Ketika Registrasi Gagal
 	- Memastikan fungsinya di eksekusi
-	- Memastikan data tidak kosong
+	- Memastikan pesan  eror tidak kosong
 	- Memastikan respon eror
 
 *Menambahkan Story (Add)
@@ -32,7 +32,7 @@ a. Ketika Add Sukses
 
 b. Ketika Add Gagal
 	- Memastikan fungsinya di eksekusi
-	- Memastikan data tidak kosong
+	- Memastikan pesan  eror tidak kosong
 	- Memastikan respon eror
 
 *Mendapatkan kumpulan lokasi (Location)
@@ -43,7 +43,7 @@ a. Ketika Location Sukses
 
 b. Ketika Location Gagal
 	- Memastikan fungsinya di eksekusi
-	- Memastikan data tidak kosong
+	- Memastikan pesan  eror tidak kosong
 	- Memastikan respon eror
 
 *Mendapatkan Detail
@@ -54,7 +54,7 @@ a. Ketika Detail Sukses
 
 b. Ketika Detail Gagal
 	- Memastikan fungsinya di eksekusi
-	- Memastikan data tidak kosong
+	- Memastikan pesan  eror tidak kosong
 	- Memastikan respon eror
 
 *Story
