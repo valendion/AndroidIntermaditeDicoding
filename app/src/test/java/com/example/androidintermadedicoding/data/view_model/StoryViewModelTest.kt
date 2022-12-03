@@ -1,6 +1,5 @@
 package com.example.androidintermadedicoding.data.view_model
 
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.AsyncPagingDataDiffer
@@ -90,9 +89,10 @@ class StoryViewModelTest {
         Mockito.verify(storyRepository).postLogin(dummyEmail, dummyPassword)
         assertTrue(actualLogin is Status.Error)
 
-        if (actualLogin is Status.Error){
-            assertNotNull(actualLogin.error)
-        }
+        actualLogin as Status.Error
+
+        assertNotNull(actualLogin.error)
+
     }
 
 
@@ -127,9 +127,10 @@ class StoryViewModelTest {
         Mockito.verify(storyRepository).postRegister(dummyName, dummyEmail, dummyPassword)
         assertTrue(actualRegister is Status.Error)
 
-        if (actualRegister is Status.Error){
-            assertNotNull(actualRegister.error)
-        }
+        actualRegister as Status.Error
+
+        assertNotNull(actualRegister.error)
+
     }
 
 
@@ -164,9 +165,10 @@ class StoryViewModelTest {
         Mockito.verify(storyRepository).postStory(dummyToken, dummyDescription, dummyFile)
         assertTrue(actualAdd is Status.Error)
 
-        if (actualAdd is Status.Error){
-            assertNotNull(actualAdd.error)
-        }
+        actualAdd as Status.Error
+
+        assertNotNull(actualAdd.error)
+
     }
 
 
@@ -196,9 +198,10 @@ class StoryViewModelTest {
         Mockito.verify(storyRepository).getAllLocation(dummyToken)
         assertTrue(actualLocation is Status.Error)
 
-        if (actualLocation is Status.Error){
-            assertNotNull(actualLocation.error)
-        }
+        actualLocation as Status.Error
+
+        assertNotNull(actualLocation.error)
+
     }
 
     @Test
@@ -207,7 +210,7 @@ class StoryViewModelTest {
 
         expectedDetail.value = Status.Success(dummyDetail)
 
-        `when`(storyRepository.getDetailStories(dummyToken, dummyId) ).thenReturn(expectedDetail)
+        `when`(storyRepository.getDetailStories(dummyToken, dummyId)).thenReturn(expectedDetail)
 
         val actualDetail = storyViewModel.getDetailStories(dummyToken, dummyId).getOrAwaitValue()
 
@@ -227,9 +230,10 @@ class StoryViewModelTest {
         Mockito.verify(storyRepository).getDetailStories(dummyToken, dummyId)
         assertTrue(actualDetail is Status.Error)
 
-        if (actualDetail is Status.Error){
-            assertNotNull(actualDetail.error)
-        }
+        actualDetail as Status.Error
+
+        assertNotNull(actualDetail.error)
+
     }
 
     @Test
@@ -245,16 +249,16 @@ class StoryViewModelTest {
 
         val differ = AsyncPagingDataDiffer(
             diffCallback = StoryListAdapter.DIFF_CALLBACK,
-            updateCallback =noopListUpdateCalback,
+            updateCallback = noopListUpdateCalback,
             workerDispatcher = Dispatchers.Main
         )
 
         differ.submitData(actualStory)
 
         assertNotNull(differ.snapshot())
-        assertEquals(dummyStory,differ.snapshot())
-        assertEquals(dummyStory.size,differ.snapshot().size)
-        assertEquals(dummyStory[0].id,differ.snapshot()[0]?.id)
+        assertEquals(dummyStory, differ.snapshot())
+        assertEquals(dummyStory.size, differ.snapshot().size)
+        assertEquals(dummyStory[0].id, differ.snapshot()[0]?.id)
     }
 
     private val noopListUpdateCalback = object : ListUpdateCallback {
